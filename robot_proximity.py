@@ -2,15 +2,13 @@ import requests
 import json
 import math
 
-r = requests.get("https://60c8ed887dafc90017ffbd56.mockapi.io/robots")
-
-robot_data = r.json()
 
 
 def distance(x1, y1, x2, y2):
     return math.sqrt((x2-x1)**2 + (y2-y1)**2)
 
 def closest_robot(loadId, x, y):
+    robot_data = requests.get("https://60c8ed887dafc90017ffbd56.mockapi.io/robots").json()
 
     closest_robot = None
     min_distance_to_goal = float("inf")
@@ -32,7 +30,9 @@ def closest_robot(loadId, x, y):
 
         
 def main():
-    print(closest_robot("8", 50, 50))
+    print(closest_robot("id", 63, 50))
 
-main()
+
+if __name__ == "__main__":
+    main()
 
